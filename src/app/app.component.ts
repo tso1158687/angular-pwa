@@ -7,49 +7,68 @@ import { PushService } from './push.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'pwa';
-  // constructor(private sw: SwPush) {}
-  // ngOnInit(): void {
-  //   this.askForNotificationPermission();
-  //   this.displayNotification();
-  // }
-  // displayNotification() {
-  //   if ('serviceWorker' in navigator) {
-  //     console.log('????');
-  //     var options = {
-  //       body: '歡迎進入30天PWA的世界',
-  //       // icon: '/src/images/icons/demo-icon96.png',
-  //       // image: '/src/images/demo.JPG',
+  key =
+    'BGDRJjAeUMkFC1uFnqR0L5-VlqwV6RxhQedXid6CY95ONU3NCQI82-WvNWc2vc9HV8YOIAC9VsMrMhJhi3XS8MQ';
+  constructor(private swPush: SwPush) {}
+  ngOnInit(): void {
+    // this.getServiceWorker();
+    this.push();
+  }
 
-  //       // lang: 'zh-Hant', //BCP 47
-  //       // vibrate: [100, 50, 200],
-  //       // badge: '/src/images/icons/demo-icon96.png',
-  //       // tag: 'confirm-notification',
-  //       // renotify: true,
-  //       // actions: [
-  //       //     { action: 'confirm', title: '確認', icon: '/src/images/icons/demo-icon96.png'},
-  //       //     { action: 'cancel', title: '取消', icon: '/src/images/icons/demo-icon96.png'}
-  //       // ]
-  //     };
-  //     // this.sw.messages.subscribe(e=>console.log(e))
-  //     console.log(navigator.serviceWorker.ready);
-  //     navigator.serviceWorker.ready.then((sw) => {
-  //       // sw.pushManager.getSubscription().then(e=>e.)
-  //       console.log(sw);
-  //       sw.showNotification('訂閱成功！！！', options);
-  //     });
-  //   }
-  // }
+  getServiceWorker() {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+      navigator.serviceWorker.ready.then((swReg) => {
+        swReg.pushManager
+          .subscribe({
+            userVisibleOnly: true,
+            applicationServerKey:
+              'BGDRJjAeUMkFC1uFnqR0L5-VlqwV6RxhQedXid6CY95ONU3NCQI82-WvNWc2vc9HV8YOIAC9VsMrMhJhi3XS8MQ',
+          })
+          .then((subscription) => {
+            // 傳送subscription到後端
+          });
+      });
+    }
+  }
 
-  // askForNotificationPermission() {
-  //   Notification.requestPermission(function (status) {
-  //     console.log('User Choice', status);
-  //     if (status !== 'granted') {
-  //       console.log('推播允許被拒絕了!');
-  //     } else {
-  //       console.log('gogog');
-  //     }
-  //   });
-  // }
+  push() {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+      console.log('????');
+      if (Notification.permission == 'granted') {
+        navigator.serviceWorker.getRegistration().then((reg) => {
+          const options: NotificationOptions = {
+            icon: 'assets/icons/icon.png',
+            image:'assets/icons/dora_bad.jpeg',
+            body: 'Please review workzone ID 140 ASAP',
+            requireInteraction:true,
+            badge:'assets/icons/icon.png',
+            vibrate: 3,
+            actions: [
+              {
+                action: 'yes',
+                title: 'View',
+              },
+              {
+                action: 'no',
+                title: 'Not Now',
+              },
+            ],
+          };
+          (reg as ServiceWorkerRegistration).showNotification(
+            'Workzone will outdated soon',
+            options
+          );
+          console.log('displayNotification');
+        });
+      }
+    }
+  }
+
+  push10(){
+    setTimeout(() => {
+      this.push()
+    }, 5000);
+  }
 }

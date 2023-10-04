@@ -9,12 +9,14 @@ import { PushService } from './push.service';
 })
 export class AppComponent implements OnInit {
   title = 'pwa';
+  location!: GeolocationPosition;
   key =
     'BGDRJjAeUMkFC1uFnqR0L5-VlqwV6RxhQedXid6CY95ONU3NCQI82-WvNWc2vc9HV8YOIAC9VsMrMhJhi3XS8MQ';
   constructor(private swPush: SwPush) {}
   ngOnInit(): void {
     // this.getServiceWorker();
     this.push();
+    this.getLocation();
   }
 
   getServiceWorker() {
@@ -40,10 +42,10 @@ export class AppComponent implements OnInit {
         navigator.serviceWorker.getRegistration().then((reg) => {
           const options: NotificationOptions = {
             icon: 'assets/icons/icon.png',
-            image:'assets/icons/dora_bad.jpeg',
+            image: 'assets/icons/dora_bad.jpeg',
             body: 'Please review workzone ID 140 ASAP',
-            requireInteraction:true,
-            badge:'assets/icons/icon.png',
+            requireInteraction: true,
+            badge: 'assets/icons/icon.png',
             vibrate: 3,
             actions: [
               {
@@ -66,9 +68,24 @@ export class AppComponent implements OnInit {
     }
   }
 
-  push10(){
+  push10() {
     setTimeout(() => {
-      this.push()
+      this.push();
     }, 5000);
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (location) => {
+          console.log(location)
+          this.location = location
+          console.log(this.location)
+        }
+      );
+    } else {
+      console.log('errpr');
+      // x.innerHTML = "Geolocation is not supported by this browser.";
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1696472203256,
+  "timestamp": 1696494172399,
   "index": "https://tso1158687.github.io/angular-pwa/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "https://tso1158687.github.io/angular-pwa/favicon.ico",
         "https://tso1158687.github.io/angular-pwa/index.html",
-        "https://tso1158687.github.io/angular-pwa/main.4eec2a75984d511a.js",
+        "https://tso1158687.github.io/angular-pwa/main.6721ed688771e05e.js",
         "https://tso1158687.github.io/angular-pwa/manifest.webmanifest",
         "https://tso1158687.github.io/angular-pwa/polyfills.37a20d4854dfc4aa.js",
         "https://tso1158687.github.io/angular-pwa/runtime.080825e25f44479b.js",
@@ -56,8 +56,8 @@
     "https://tso1158687.github.io/angular-pwa/assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
     "https://tso1158687.github.io/angular-pwa/assets/icons/icon.png": "4ff7292784a2e3cac08e775bed927d1cda50b21a",
     "https://tso1158687.github.io/angular-pwa/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://tso1158687.github.io/angular-pwa/index.html": "f390025185f2a91fd4bc0aff72545fca6aad1f05",
-    "https://tso1158687.github.io/angular-pwa/main.4eec2a75984d511a.js": "d8f9a89654a40df08e7bd82da74810bd2a397608",
+    "https://tso1158687.github.io/angular-pwa/index.html": "482d3acd8b5a18c87176efd8fe21ed517f9689f6",
+    "https://tso1158687.github.io/angular-pwa/main.6721ed688771e05e.js": "d6104bc5708d1d5c1ec3f932ab949260925a7d0e",
     "https://tso1158687.github.io/angular-pwa/manifest.webmanifest": "647db4fba4be264d65d1cbc9d3c6606d05610dcf",
     "https://tso1158687.github.io/angular-pwa/polyfills.37a20d4854dfc4aa.js": "8e1fb27a84f7b2e208b3c7a2a6cbbf18d2dd0161",
     "https://tso1158687.github.io/angular-pwa/runtime.080825e25f44479b.js": "a654f83c4394d600fdf21c3eb5fe9400bac347c2",
